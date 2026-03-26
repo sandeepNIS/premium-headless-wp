@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Headless WordPress with Next.js & Tailwind CSS
 
-## Getting Started
+A premium, high-performance headless CMS frontend built with **Next.js 16** and **Tailwind CSS v4**, powered by the **WordPress REST API**.
 
-First, run the development server:
+## 🚀 Key Features
+
+- **Tailwind v4 Architecture**: Leveraging the latest CSS-first configuration and @theme blocks for ultimate performance.
+- **Dynamic Routing**: Automatic generation of Post, Category, and Static Page routes from WordPress content.
+- **Premium Design System**:
+  - **Home**: Interactive hero with animated gradients and insights grid.
+  - **About**: Custom storytelling layout with mission-driven design.
+  - **Contact**: Fully integrated **Contact Form 7** submission handler with modern React UI.
+- **Mobile First**: Responsive sidebar navigation designed for screens below 990px.
+- **Headless Optimized**: Centralized API utility with revalidation (ISR) for blazing-fast performance.
+
+## 🛠 Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Data**: WordPress REST API
+- **Forms**: Contact Form 7 (Submission via REST API)
+
+## ⚙️ Configuration
+
+Create a `.env.local` file in the root directory and add the following:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Your WordPress JSON API URL
+NEXT_PUBLIC_WORDPRESS_API_URL=http://localhost/headless/wp-json/wp-json/wp/v2
+
+# Optional: Your Contact Form 7 ID (defaults to 1 if not set)
+NEXT_PUBLIC_CF7_ID=1
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> [!IMPORTANT]
+> Ensure your WordPress instance has **Permalinks** set to `Post name` for correct slug-based routing.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏃 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Clone the project**
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+4.  **Open the app**: [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/`: Next.js pages and layouts (About, Contact, Categories, Posts).
+- `src/components/`: Reusable UI modules (Header, Footer, PostCard, ContactForm).
+- `src/lib/api.ts`: Centralized WordPress API fetching logic.
+- `src/app/globals.css`: Tailwind v4 theme and global styles.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open-source and ready for your next premium headless venture.

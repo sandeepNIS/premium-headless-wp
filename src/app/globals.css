@@ -1,49 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-secondary: #ec4899;
+  --color-background: #0f172a;
+  --color-foreground: #f8fafc;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary: #ec4899;
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --text-muted: #94a3b8;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-background text-foreground min-h-screen overflow-x-hidden;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Base Post Styling (from WP content) */
+.wp-content img {
+  @apply max-w-full h-auto rounded-lg my-6;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.wp-content p {
+  @apply mb-4 leading-relaxed;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.wp-content ul, .wp-content ol {
+  @apply ml-6 mb-4 list-disc;
+}
+
+.wp-content h2 {
+  @apply text-2xl font-bold mt-8 mb-4;
+}
+
+.wp-content h3 {
+  @apply text-xl font-bold mt-6 mb-3;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient 6s ease infinite;
 }

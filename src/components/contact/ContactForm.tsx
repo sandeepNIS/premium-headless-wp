@@ -15,7 +15,20 @@ export default function ContactForm({ formId }: ContactFormProps) {
     setStatus('submitting');
 
     const formData = new FormData(e.currentTarget);
-    const apiBase = process.env.NEXT_PUBLIC_WORDPRESS_API_URL?.replace('/wp/v2', '/contact-form-7/v1');
+    
+    // Add required CF7 hidden fields for headless submission
+    formData.append('_wpcf7', formId);
+    formData.append('_wpcf7_unit_tag', `wpcf7-f${formId}-p1-o1`);
+    formData.append('_wpcf7_locale', 'en_US');
+    
+    // Robustly handle the API URL
+    let apiBase = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || '';
+    if (apiBase.includes('/wp/v2')) {
+      apiBase = apiBase.replace('/wp/v2', '/contact-form-7/v1');
+    } else if (!apiBase.includes('/contact-form-7/v1')) {
+      apiBase = apiBase.replace(/\/$/, '') + '/contact-form-7/v1';
+    }
+    
     const endpoint = `${apiBase}/contact-forms/${formId}/feedback`;
 
     try {

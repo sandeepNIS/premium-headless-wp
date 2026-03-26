@@ -3,7 +3,7 @@ import { getPageBySlug } from '@/lib/api';
 
 export default async function ContactPage() {
   const page = await getPageBySlug('contact');
-  const formId = process.env.NEXT_PUBLIC_CF7_ID || "1"; // Default to 5 if not provided
+  const formId = process.env.NEXT_PUBLIC_CF7_ID || "15"; // Default to 15 based on your screenshot
 
   return (
     <div className="pb-32">

@@ -40,6 +40,9 @@ export default function Header({ categories }: { categories: any[] }) {
                 </li>
               ))}
               <li>
+                <Link href="/projects" className="text-foreground/70 hover:text-primary transition-colors">Projects</Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-foreground/70 hover:text-primary transition-colors">About</Link>
               </li>
               <li>
@@ -99,6 +102,9 @@ export default function Header({ categories }: { categories: any[] }) {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link href="/projects" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">Projects</Link>
+                </li>
                 <li>
                   <Link href="/about" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">About</Link>
                 </li>

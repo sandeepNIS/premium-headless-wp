@@ -55,9 +55,37 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </div>
           
           <div 
-            className="wp-content post-content text-lg md:text-xl text-foreground/90 leading-relaxed"
+            className="wp-content post-content text-lg md:text-xl text-foreground/90 leading-relaxed mb-20"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
+
+          {/* ACF Extended Data - Only shows if ACF is populated */}
+          {post.acf && Object.keys(post.acf).length > 0 && (
+            <div className="border-t border-white/10 pt-16">
+              <h3 className="text-2xl font-black text-white mb-8 tracking-tighter">
+                Project <span className="text-primary italic">Specifications</span>
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {Object.entries(post.acf).map(([key, value]) => {
+                  if (!value || typeof value === 'object') return null;
+                  
+                  // Simple formatting for the label (e.g. project_highlights -> Project Highlights)
+                  const label = key.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+                  
+                  return (
+                    <div key={key} className="p-6 bg-white/5 border border-white/5 rounded-2xl hover:bg-white/[0.07] transition-all hover:-translate-y-1">
+                      <p className="text-secondary text-[10px] uppercase font-black tracking-widest mb-2">
+                        {label}
+                      </p>
+                      <p className="text-white font-medium text-lg">
+                        {String(value)}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </article>

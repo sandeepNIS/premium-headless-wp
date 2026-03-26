@@ -40,3 +40,12 @@ export async function getPageBySlug(slug: string) {
 export async function getCategories() {
   return fetchAPI('/categories');
 }
+
+export async function getProjects() {
+  return fetchAPI('/project?_embed');
+}
+
+export async function getProjectBySlug(slug: string) {
+  const projects = await fetchAPI(`/project?slug=${slug}&_embed`);
+  return projects[0];
+}

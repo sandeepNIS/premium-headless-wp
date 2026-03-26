@@ -29,7 +29,7 @@ Create a `.env.local` file in the root directory and add the following:
 NEXT_PUBLIC_WORDPRESS_API_URL=http://localhost/headless/wp-json/wp-json/wp/v2
 
 # Optional: Your Contact Form 7 ID (defaults to 1 if not set)
-NEXT_PUBLIC_CF7_ID=1
+NEXT_PUBLIC_CF7_ID="15"
 ```
 
 > [!IMPORTANT]
